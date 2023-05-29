@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<div class="works">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.works.size > 0 -%}
+    <ul class="work-list">
+      {%- assign works_by_date_desc = site.works | reverse -%}
+      {%- for work in works_by_date_desc -%}
+        <li>
+          {%- assign date_format = site.composer.work_date_format | default: "%Y" -%}
+          <div class="work-heading">
+            <a class="work-link" href="{{ work.url | relative_url }}">
+              <span class="work-title">{{ work.title }}</span>
+              <span class="work-date">({{ work.date | date: date_format }})</span>
+            </a>
+          </div>
+
+          {%- assign instrumentation = work.instrumentation_summary | default: work.instrumentation -%}
+          {%- assign duration = work.duration -%}
+          {%- if instrumentation or duration -%}
+            <div class="work-info">
+              {%- if instrumentation -%}
+                <span class="instrumentation">{{ instrumentation }}</span>
+                {%- if duration -%},{{ " " }}
+                {%- endif -%}
+              {%- endif -%}
+              {%- if duration -%}
+                {{ duration }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+</div>

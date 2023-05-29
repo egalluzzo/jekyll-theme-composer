@@ -1,0 +1,9 @@
+collections:
+  works:
+    output: true
+  films:
+    output: true
+  shows:
+    output: true
+  albums:
+    output: true

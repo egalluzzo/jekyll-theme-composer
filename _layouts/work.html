@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<article class="work">
+
+  <h1>{{ page.title }}</h1>
+
+  {%- if page.youtube_id -%}
+    <figure class="youtube">
+      <iframe loading="lazy" title="{{ page.title }} on YouTube" width="560" height="315" src="https://www.youtube.com/embed/{{ page.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </figure>
+  {%- elsif page.soundcloud_id -%}
+    <figure class="soundcloud">
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{{ page.soundcloud_id }}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </figure>
+  {%- endif -%}
+
+  <h2 class="instrumentation-title">Instrumentation</h2>
+  <div class="instrumentation">{{ page.instrumentation }}</div>
+
+  {%- if page.duration -%}
+    <h2 class="duration-title">Duration</h2>
+    <div class="duration">
+      {{ page.duration }}
+    </div>
+  {%- endif -%}
+
+  {%- if page.commissioned_by or page.written_for or page.premiered_at or page.premiered_on or page.premiered_by -%}
+    <h2 class="performance-title">Performance Information</h2>
+    {%- if page.commissioned_by -%}
+      <div class="commission">
+        Commissioned by <span class="commissioned_by">{{ page.commissioned_by }}</span>
+      </div>
+    {%- endif -%}
+    {%- if page.written_for -%}
+      <div class="written-for">
+        Written for <span class="written-for">{{ page.written_for }}</span>
+      </div>
+    {%- endif -%}
+    {%- if page.premiered_at or page.premiered_on or page.premiered_by -%}
+      <div class="premier">
+        Premiered
+        {%comment%}
+          There's probably a better way of forcing a space between words than {{ " " }},
+          but hey, it works and it's concise.
+        {%endcomment%}
+        {%- if page.premiered_on -%}
+          {%- assign date_format = site.composer.premier_date_format | default: "%B %-d, %Y" -%}
+          {{ " " }}on <span class="premiered-on">{{ page.premiered_on | "date: date_format" }}</span>
+        {%- endif -%}
+        {%- if page.premiered_by -%}
+          {{ " " }}by <span class="premiered-by">{{ page.premiered_by }}</span>
+        {%- endif -%}
+        {%- if page.premiered_at -%}
+          {{ " " }}in <span class="premiered-at">{{ page.premiered_at }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if page.score_url -%}
+    <h2 class="score-title">Score</h2>
+    <div class="score">
+      View the <a href="{{ page.score_url | relative_url }}">score</a>
+    </div>
+  {%- endif -%}
+  
+  <h2 class="program-note-title">Program Notes</h2>
+  <div class="program-note">
+    {{ content }}
+  </div>
+
+</article>
