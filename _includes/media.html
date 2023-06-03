@@ -13,3 +13,8 @@
   <iframe width="100%" height="120" frameborder="no" src="https://bandcamp.com/EmbeddedPlayer/album={{ page.bandcamp_id | url_encode }}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
 </figure>
 {%- endif -%}
+{%- if page.spotify_url -%}
+<figure class="spotify">
+  <iframe width="100%" height="352" frameborder="0" allowfullscreen="" loading="lazy" src="{{ page.spotify_url | replace_first: 'spotify.com/', 'spotify.com/embed/' }}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</figure>
+{%- endif -%}
