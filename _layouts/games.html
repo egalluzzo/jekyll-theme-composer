@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="games">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.games.size > 0 -%}
+    <ul class="game-list">
+      {%- assign games_by_date_desc = site.games | reverse -%}
+      {%- for game in games_by_date_desc -%}
+        <li>
+          {%- if game.image_url -%}
+          <a href="{{ game.url | relative_url }}">
+            <img class="thumbnail" src="{{ game.image_url | relative_url }}" alt="Image for {{ game.title }}"/>
+          </a>
+          {%- endif -%}
+
+          {%- assign date_format = site.composer.game_date_format | default: "%Y" -%}
+          <a class="game-link" href="{{ game.url | relative_url }}">
+            <div class="game-heading">
+              <span class="game-title">{{ game.title }}</span>
+              <span class="game-date">({{ game.date | date: date_format }})</span>
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+</div>

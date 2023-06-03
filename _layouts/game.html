@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<article class="game">
+
+  <h1>{{ page.title }}</h1>
+
+  {%- include media.html -%}
+
+  {%- if page.image_url -%}
+    <img class="screenshot" src="{{ page.image_url | relative_url }}" alt="Screenshot for {{ page.title }}" />
+  {%- endif -%}
+
+  <h2 class="release-date-title">Game Information</h2>
+  {%- if page.date -%}
+    <div>
+      {%- assign date_format = site.composer.game_release_date_format | default: "%B %-d, %Y" -%}
+      Release date: {{ page.date | date: date_format }}
+    </div>
+  {%- endif -%}
+  {%- if page.game_url -%}
+    <div>
+      Visit the <a href="{{ page.game_url | relative_url }}">game website</a>
+    </div>
+  {%- endif -%}
+
+  <h2 class="game-notes-title">Notes</h2>
+  <div class="game-notes">
+    {{ content }}
+  </div>
+
+</article>

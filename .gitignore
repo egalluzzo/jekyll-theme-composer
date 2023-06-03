@@ -7,5 +7,7 @@ Gemfile.lock
 _works
 _films
 _shows
+_games
 _albums
-assets/pdf
+assets/scores
+assets/games

@@ -1,6 +1,8 @@
 collections:
   works:
     output: true
+  games:
+    output: true
   films:
     output: true
   shows:

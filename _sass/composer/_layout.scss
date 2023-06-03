@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /**
  * Site header
  */
@@ -234,6 +236,35 @@
   font-style: italic;
 }
 
+
+
+/**
+ * Game list
+ */
+ 
+.game-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  > li {
+    margin-bottom: $spacing-unit;
+    flex: math.round(math.div($content-width, 2) - ($spacing-unit * 4));
+    padding: $spacing-unit;
+    text-align: center;
+
+    img {
+      width: math.round(math.div($content-width, 2) - ($spacing-unit * 5));
+      margin-bottom: math.div($spacing-unit, 2);
+    }
+  }
+}
+
+.game-date {
+  font-style: italic;
+}
 
 
 /**
