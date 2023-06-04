@@ -14,9 +14,9 @@ layout: default
       {%- assign games_by_date_desc = site.games | reverse -%}
       {%- for game in games_by_date_desc -%}
         <li>
-          {%- if game.image_url -%}
+          {%- if game.thumbnail_url or game.image_url -%}
           <a href="{{ game.url | relative_url }}">
-            <img class="thumbnail" src="{{ game.image_url | relative_url }}" alt="Image for {{ game.title }}"/>
+            <img class="thumbnail" src="{{ game.thumbnail_url | default: game.image_url | relative_url }}" alt="Image for {{ game.title }}"/>
           </a>
           {%- endif -%}
 

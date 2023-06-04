@@ -11,3 +11,5 @@ _games
 _albums
 assets/scores
 assets/games
+/*.html
+/*.md
