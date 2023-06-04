@@ -24,7 +24,7 @@ gem "jekyll-theme-composer"
 And add this line to your Jekyll site's `_config.yml` file:
 
 ```yaml
-theme: composer
+theme: jekyll-theme-composer
 collections:
   works:
     output: true
